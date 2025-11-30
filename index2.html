@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<title>Hành Trình Lịch Sử Việt Nam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+/* ===== RESET ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, serif;
+  background: radial-gradient(circle at top, #fdf7e7 0, #e0d2b8 45%, #b89d70 100%);
+  color: #2b2115;
+}
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ===== HEADER ===== */
+header {
+  padding: 24px 16px;
+  background: #3a2a14;
+  color: #fff4d2;
+  text-align: center;
+  border-bottom: 4px solid #c29a52;
+}
+header h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+/* ===== MAIN ===== */
+main {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px 40px;
+}
+
+/* INTRO BOX */
+.intro {
+  background: #fffaf0;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid #c9b58b;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  margin-bottom: 24px;
+}
+
+/* LƯỚI NHÂN VẬT */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.character-card {
+  background: #fff8e9;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid #c29a52;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+  position: relative;
+}
+.character-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  border: 1px solid #d8c29a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.character-header {
+  display: flex;
+  justify-content: space-between;
+}
+.character-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.era-tag {
+  font-size: 0.75rem;
+  padding: 3px 6px;
+  border-radius: 8px;
+  background: #e8d4ac;
+  border: 1px solid #b07a38;
+}
+
+/* QUESTION */
+.question-block {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px dashed #c29a52;
+  background: #fff4dd;
+  border-radius: 12px;
+}
+.options label {
+  display: block;
+  background: #fff;
+  padding: 6px;
+  border-radius: 10px;
+  margin: 4px 0;
+  cursor: pointer;
+  border: 1px solid #d1b78a;
+}
+.options label:hover {
+  background: #fff9ed;
+}
+input[type=radio] { display: none; }
+
+/* LOCK + BIO */
+.lock-message { 
+  font-style: italic; 
+  margin-top: 8px; 
+}
+
+.bio {
+  display: none;
+  background: #fffef8;
+  border-radius: 12px;
+  border: 1px solid #cdae6a;
+  padding: 10px;
+  margin-top: 10px;
+}
+.unlocked-banner {
+  display: inline-block;
+  background: #1e7c3d;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+}
+
+/* LOGIC mở khóa */
+input.correct:checked ~ .bio { display: block; }
+input.correct:checked ~ .lock-message { display: none; }
+input.correct:checked ~ .question-block .answer-correct-label {
+  background: #e1ffe8;
+  border-color: #2c7c3f;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Hành Trình Lịch Sử Việt Nam</h1>
+  <p>Khám phá nhân vật – trả lời đúng để mở khóa!</p>
+</header>
+
+<main>
+
+<section class="intro">
+  <h2>Cách chơi</h2>
+  <p>Chọn đáp án đúng → tiểu sử nhân vật sẽ được mở khóa.</p>
+</section>
+
+<!-- GRID -->
+<section class="characters-grid">
+
+<!-- ======================= -->
+<!-- 1. NGÔ QUYỀN -->
+<!-- ======================= -->
+<article class="character-card">
+
+  <!-- Input radio -->
+  <input type="radio" id="nq-a" name="nq" class="correct">
+  <input type="radio" id="nq-b" name="nq">
+  <input type="radio" id="nq-c" name="nq">
+
+  <!-- Ảnh Wikipedia -->
+  <img class="character-img"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Ng%C3%B4_Quy%E1%BB%81n_in_ceramic_mosaic_by_Nguy%E1%BB%85n_Th%E1%BB%8B_H%E1%BB%93a.jpg/330px-Ng%C3%B4_Quy%E1%BB%81n_in_ceramic_mosaic_by_Nguy%E1%BB%85n_Th%E1%BB%8B_H%E1%BB%93a.jpg"
+  >
+
+  <div class="character-header">
+    <h2 class="character-name">Ngô Quyền</h2>
+    <span class="era-tag">Thế kỷ X</span>
+  </div>
+
+  <p>Người đánh bại quân Nam Hán tại Bạch Đằng.</p>
+
+  <div class="question-block">
+    <p>Câu hỏi: Trận Bạch Đằng diễn ra năm nào?</p>
+    <div class="options">
+      <label for="nq-a" class="answer-correct-label">A. 938</label>
+      <label for="nq-b">B. 931</label>
+      <label for="nq-c">C. 980</label>
+    </div>
+  </div>
+
+  <p class="lock-message">🔒 Nhân vật đang bị khóa.</p>
+
+  <div class="bio">
+    <div class="unlocked-banner">ĐÃ MỞ KHÓA</div>
+    Ngô Quyền đánh tan quân Nam Hán trên sông Bạch Đằng năm 938.
+  </div>
+
+</article>
+
+<!-- ======================= -->
+<!-- 2. ĐINH BỘ LĨNH -->
+<!-- ======================= -->
+<article class="character-card">
+
+  <input type="radio" id="dbl-a" name="dbl" class="correct">
+  <input type="radio" id="dbl-b" name="dbl">
+  <input type="radio" id="dbl-c" name="dbl">
+
+  <!-- Ảnh Wikipedia -->
+  <img class="character-img"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Dinh_Bo_Linh.jpg/330px-Dinh_Bo_Linh.jpg"
+  >
+
+  <div class="character-header">
+    <h2 class="character-name">Đinh Bộ Lĩnh</h2>
+    <span class="era-tag">Thế kỷ X</span>
+  </div>
+
+  <p>Dẹp loạn 12 sứ quân, lập nước Đại Cồ Việt.</p>
+
+  <div class="question-block">
+    <p>Năm lên ngôi hoàng đế?</p>
+    <div class="options">
+      <label for="dbl-a" class="answer-correct-label">A. 968</label>
+      <label for="dbl-b">B. 939</label>
+      <label for="dbl-c">C. 980</label>
+    </div>
+  </div>
+
+  <p class="lock-message">🔒 Nhân vật đang bị khóa.</p>
+
+  <div class="bio">
+    <div class="unlocked-banner">ĐÃ MỞ KHÓA</div>
+    Ông lên ngôi năm 968, đặt quốc hiệu Đại Cồ Việt.
+  </div>
+
+</article>
+
+<!-- ======================= -->
+<!-- 3. LÊ ĐẠI HÀNH -->
+<!-- ======================= -->
+<article class="character-card">
+
+  <input type="radio" id="ldh-a" name="ldh">
+  <input type="radio" id="ldh-b" name="ldh">
+  <input type="radio" id="ldh-c" name="ldh" class="correct">
+
+  <!-- Ảnh Wikipedia -->
+  <img class="character-img"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Le_Dai_Hanh.jpg/330px-Le_Dai_Hanh.jpg"
+  >
+
+  <div class="character-header">
+    <h2 class="character-name">Lê Đại Hành</h2>
+    <span class="era-tag">Thế kỷ X</span>
+  </div>
+
+  <p>Vua Tiền Lê – đánh bại quân Tống năm 981.</p>
+
+  <div class="question-block">
+    <p>Năm đánh thắng quân Tống?</p>
+    <div class="options">
+      <label for="ldh-a">A. 970</label>
+      <label for="ldh-b">B. 982</label>
+      <label for="ldh-c" class="answer-correct-label">C. 981</label>
+    </div>
+  </div>
+
+  <p class="lock-message">🔒 Nhân vật đang bị khóa.</p>
+
+  <div class="bio">
+    <div class="unlocked-banner">ĐÃ MỞ KHÓA</div>
+    Ông đánh bại quân Tống tại Chi Lăng – Bạch Đằng năm 981.
+  </div>
+
+</article>
+
+<!-- ======================= -->
+<!-- 4. LÝ THÁI TỔ -->
+<!-- ======================= -->
+<article class="character-card">
+
+  <input type="radio" id="ltt-a" name="ltt">
+  <input type="radio" id="ltt-b" name="ltt" class="correct">
+  <input type="radio" id="ltt-c" name="ltt">
+
+  <!-- Ảnh Wikipedia -->
+  <img class="character-img"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Ly_Thai_To.jpg/330px-Ly_Thai_To.jpg"
+  >
+
+  <div class="character-header">
+    <h2 class="character-name">Lý Thái Tổ</h2>
+    <span class="era-tag">Thế kỷ XI</span>
+  </div>
+
+  <p>Vua khai sáng triều Lý – ban Chiếu dời đô.</p>
+
+  <div class="question-block">
+    <p>Năm ban Chiếu dời đô?</p>
+    <div class="options">
+      <label for="ltt-a">A. 1005</label>
+      <label for="ltt-b" class="answer-correct-label">B. 1010</label>
+      <label for="ltt-c">C. 1054</label>
+    </div>
+  </div>
+
+  <p class="lock-message">🔒 Nhân vật đang bị khóa.</p>
+
+  <div class="bio">
+    <div class="unlocked-banner">ĐÃ MỞ KHÓA</div>
+    Năm 1010, Lý Thái Tổ dời đô từ Hoa Lư ra Thăng Long.
+  </div>
+
+</article>
+
+</section>
+</main>
+
+</body>
+</html>
